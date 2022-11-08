@@ -1,4 +1,4 @@
-## midway-nacos
+## midway-throttler
 
 midway request throttler component, based on [traffic-throttler](https://www.npmjs.com/package/traffic-throttler)。 It's core design base on [@nestjs/throttler](https://www.npmjs.com/package/@nestjs/throttler), and API will same as [@nestjs/throttler](https://www.npmjs.com/package/@nestjs/throttler).
 
