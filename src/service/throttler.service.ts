@@ -1,4 +1,4 @@
-import { App, ServiceFactory } from '@midwayjs/core';
+import { ServiceFactory } from '@midwayjs/core';
 import {
   Config,
   Init,
@@ -7,9 +7,8 @@ import {
   ScopeEnum,
   Logger,
 } from '@midwayjs/decorator';
-import { Application } from '@midwayjs/koa';
-import { IThrottler, IThrottlerOption } from 'traffic-throttler';
-import { ThrottlerGuard } from '../guard/throttler.guard';
+import { IThrottler } from 'traffic-throttler';
+import { IMidwayThrottlerOption } from '../interface';
 
 /**
  * nacos 配置中心client
@@ -21,10 +20,7 @@ export class ThrottlerFactoryService extends ServiceFactory<IThrottler> {
   logger;
 
   @Config('throttler')
-  throttlerConfig: IThrottlerOption;
-
-  @App()
-  app: Application;
+  throttlerConfig: IMidwayThrottlerOption;
 
   getName(): string {
     return 'ThrottlerFactoryService';
@@ -36,16 +32,14 @@ export class ThrottlerFactoryService extends ServiceFactory<IThrottler> {
   }
 
   protected async createClient(config: any): Promise<IThrottler> {
+    this.logger.info(`createClient调用, %s`, config);
+
     if (!config) {
       throw new Error('config 空');
     }
     if (!config.logger) {
       config.logger = console;
     }
-    //初始化 throttler 留到 Guard 中
-    const appCtx = this.app.getApplicationContext();
-    appCtx.getAsync(ThrottlerGuard);
-
     return;
   }
 

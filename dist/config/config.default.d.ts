@@ -1,5 +1,2 @@
-export declare const throttler: {
-    clients: {
-        default: {};
-    };
-};
+import { IMidwayThrottlerOption } from "../interface";
+export declare const throttler: IMidwayThrottlerOption;

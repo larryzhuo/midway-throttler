@@ -5,12 +5,12 @@ const core_1 = require("@midwayjs/core");
 const constant_1 = require("../constant");
 function SkipThrottle(skip = true) {
     return (target, propertyKey, descriptor) => {
-        if (descriptor) {
+        if (propertyKey) {
             (0, core_1.savePropertyMetadata)(constant_1.THROTTLER_SKIP, skip, target, propertyKey);
-            return descriptor;
         }
-        (0, core_1.savePropertyMetadata)(constant_1.THROTTLER_SKIP, skip, target, propertyKey);
-        return target;
+        else {
+            (0, core_1.saveClassMetadata)(constant_1.THROTTLER_SKIP, skip, target);
+        }
     };
 }
 exports.SkipThrottle = SkipThrottle;

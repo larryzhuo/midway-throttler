@@ -1,9 +1,11 @@
 import * as DefaultConfig from './config/config.default';
-import { Configuration } from '@midwayjs/decorator';
+import { Configuration, Logger } from '@midwayjs/decorator';
 import { ThrottlerFactoryService } from './service/throttler.service';
+import { ThrottlerGuard } from './guard/throttler.guard';
 
+//入口启动文件
 @Configuration({
-  namespace: 'throttler',
+  namespace: 'traffic-throttler',
   importConfigs: [
     {
       default: DefaultConfig,
@@ -11,8 +13,17 @@ import { ThrottlerFactoryService } from './service/throttler.service';
   ],
 })
 export class ThrottlerConfiguration {
+  
+  @Logger('coreLogger')
+  logger;
+
   async onReady(container) {
+    this.logger.info(`throttler onReady`);
+
     await container.getAsync(ThrottlerFactoryService);
+
+    //import guard
+    await container.getAsync(ThrottlerGuard);
   }
 
   async onStop(container): Promise<void> {
@@ -20,5 +31,7 @@ export class ThrottlerConfiguration {
     if (factory) {
       await factory.stop();
     }
+
+    this.logger.info(`throttler stop`);
   }
 }

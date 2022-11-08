@@ -1,1 +1,1 @@
-{"version":3,"file":"config.default.js","sourceRoot":"../Users/apple/Documents/midway-throttler/src","sources":["config/config.default.ts"],"names":[],"mappings":";;;AAAa,QAAA,SAAS,GAAG;IACvB,OAAO,EAAE;QACP,OAAO,EAAE,EAAE;KACZ;CACF,CAAC"}
+{"version":3,"file":"config.default.js","sourceRoot":"../Users/apple/Documents/midway-throttler/src","sources":["config/config.default.ts"],"names":[],"mappings":";;;AAAA,yDAAoD;AAGvC,QAAA,SAAS,GAA0B;IAC9C,GAAG,EAAE,EAAE;IACP,KAAK,EAAE,CAAC;IACR,OAAO,EAAE;QACP,IAAI,EAAE,mCAAe,CAAC,MAAM;KAC7B;CACF,CAAC"}

@@ -1,6 +1,5 @@
-// import { ServiceFactoryConfigOption } from '@midwayjs/core';
+import { IThrottlerOption } from "traffic-throttler";
 
-// export interface INacosConfig {
-//   registry?: ServiceFactoryConfigOption<any>;
-//   config?: ServiceFactoryConfigOption<any>;
-// }
+export interface IMidwayThrottlerOption extends IThrottlerOption {
+  errorMsg?:string; //error message
+}

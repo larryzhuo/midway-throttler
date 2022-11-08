@@ -1,4 +1,4 @@
-import { savePropertyMetadata } from '@midwayjs/core';
+import { saveClassMetadata, savePropertyMetadata } from '@midwayjs/core';
 import { THROTTLER_SKIP } from '../constant';
 
 export function SkipThrottle(skip = true): MethodDecorator & ClassDecorator {
@@ -7,11 +7,10 @@ export function SkipThrottle(skip = true): MethodDecorator & ClassDecorator {
     propertyKey?: string | symbol,
     descriptor?: TypedPropertyDescriptor<any>
   ) => {
-    if (descriptor) {
+    if(propertyKey) {
       savePropertyMetadata(THROTTLER_SKIP, skip, target, propertyKey);
-      return descriptor;
+    } else {
+      saveClassMetadata(THROTTLER_SKIP, skip, target);
     }
-    savePropertyMetadata(THROTTLER_SKIP, skip, target, propertyKey);
-    return target;
   };
 }

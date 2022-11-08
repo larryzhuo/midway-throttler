@@ -1,32 +1,23 @@
-import { savePropertyMetadata } from '@midwayjs/core';
+import { saveClassMetadata, savePropertyMetadata } from '@midwayjs/core';
 import { THROTTLER_LIMIT, THROTTLER_TTL } from '../constant';
 
 export const MODEL_KEY = 'decorator:midway-trottler:throttle';
-
-function setThrottlerMetadata(
-  target: any,
-  limit: number,
-  ttl: number,
-  propertyKey
-): void {
-  savePropertyMetadata(THROTTLER_TTL, ttl, target, propertyKey);
-  savePropertyMetadata(THROTTLER_LIMIT, limit, target, propertyKey);
-}
 
 export function Throttle(
   limit = 20,
   ttl = 60
 ): MethodDecorator & ClassDecorator {
   return (
-    target: any,
-    propertyKey?: string | symbol,
-    descriptor?: TypedPropertyDescriptor<any>
+    target: any,  //method时=class对象, class时=[class HomeController]
+    propertyKey?: string | symbol,  //method时=方法名， class时=undefined
+    descriptor?: TypedPropertyDescriptor<any> //method时={ value: , writable: true, enumerable: false, configurable: true }， class时=undefined
   ) => {
-    if (descriptor) {
-      setThrottlerMetadata(descriptor.value, limit, ttl, propertyKey);
-      return descriptor;
+    if(propertyKey) {
+      savePropertyMetadata(THROTTLER_TTL, ttl, target, propertyKey);
+      savePropertyMetadata(THROTTLER_LIMIT, limit, target, propertyKey);
+    } else {
+      saveClassMetadata(THROTTLER_TTL, ttl, target);
+      saveClassMetadata(THROTTLER_LIMIT, limit, target);
     }
-    setThrottlerMetadata(target, limit, ttl, propertyKey);
-    return target;
   };
 }

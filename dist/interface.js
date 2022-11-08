@@ -1,6 +1,3 @@
-// import { ServiceFactoryConfigOption } from '@midwayjs/core';
-// export interface INacosConfig {
-//   registry?: ServiceFactoryConfigOption<any>;
-//   config?: ServiceFactoryConfigOption<any>;
-// }
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 //# sourceMappingURL=interface.js.map

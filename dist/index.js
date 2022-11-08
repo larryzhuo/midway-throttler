@@ -19,5 +19,7 @@ var configuration_1 = require("./configuration");
 Object.defineProperty(exports, "Configuration", { enumerable: true, get: function () { return configuration_1.ThrottlerConfiguration; } });
 __exportStar(require("./decorator/skip-throttle.decorator"), exports);
 __exportStar(require("./decorator/throttle.decorator"), exports);
+__exportStar(require("./service/throttler.service"), exports);
+__exportStar(require("./guard/throttler.guard"), exports);
 __exportStar(require("traffic-throttler"), exports);
 //# sourceMappingURL=index.js.map
