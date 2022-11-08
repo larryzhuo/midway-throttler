@@ -4,6 +4,11 @@ midway request throttler component, based on [traffic-throttler](https://www.npm
 
 这是基于 midway 3.0 的限流器组件模块，基于 [traffic-throttler](https://www.npmjs.com/package/traffic-throttler) 封装。核心逻辑来自 [@nestjs/throttler](https://www.npmjs.com/package/@nestjs/throttler), API 用法也尽量与其保持一致
 
+
+### Install （安装）
+
+> npm i midway-throttler --save
+
 ## Usage（用法）
 
 ### 1. 引入组件
