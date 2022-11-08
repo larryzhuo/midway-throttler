@@ -1,6 +1,6 @@
 {
   "name": "midway-throttler",
-  "version": "3.0.4",
+  "version": "1.0.0",
   "description": "midway throttler base on traffic-throttler",
   "main": "dist/index.js",
   "typings": "index.d.ts",
@@ -9,7 +9,8 @@
     "test": "cross-env midway-bin test --ts",
     "cov": "cross-env midway-bin cov --ts",
     "lint": "mwts check",
-    "lint:fix": "mwts fix"
+    "lint:fix": "mwts fix",
+    "example": "cd ./example/throttler-demo && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "@midwayjs/cli": "^1.2.38",
     "@midwayjs/core": "^3.0.0",
     "@midwayjs/decorator": "^3.0.0",
+    "@midwayjs/koa": "^3.6.0",
     "@midwayjs/mock": "^3.0.0",
     "@types/jest": "^27.4.0",
     "@types/koa": "^2.13.5",
@@ -42,7 +44,6 @@
     "typescript": "~4.6.0"
   },
   "dependencies": {
-    "@midwayjs/koa": "^3.6.0",
     "traffic-throttler": "^1.0.1"
   }
 }
